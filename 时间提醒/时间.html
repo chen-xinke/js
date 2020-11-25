@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+        var date1=new Date();
+        var hours1=date1.getHours();
+        alert(date1);
+        alert(hours1)
+        if (7>=hours1&&hours1>=5) {
+        	alert("早上好")
+        }else if(11>hours1&&hours1>7){
+            alert("上午好")
+        }else if (13>=hours1&&hours1>=11) {
+        	alert("中午好")
+        }else if (17>hours1&&hours1>13) {
+        	alert("下午好")
+        }else if (21>=hours1&&hours1>=17) {
+        	alert("晚上好")
+        }else if (23>hours1&&hours1>21) {
+        	alert("夜深了睡吧，晚安。")
+        }else{
+        	alert("怎么还不睡，小心秃头")
+        }
+
+
+	</script>
+</body>
+</html>

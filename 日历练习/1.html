@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JAVAscript练习</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            background: #f6f9fc;
+            font-family: arial;
+        }
+
+        .calendar {
+            width: 210px;
+            margin: 50px auto 0;
+            padding: 10px 10px 20px 20px;
+            background: #eae9e9;
+        }
+
+        .calendar ul {
+            width: 210px;
+            overflow: hidden;
+            padding-bottom: 10px;
+        }
+
+        .calendar li {
+            float: left;
+            width: 58px;
+            height: 54px;
+            margin: 10px 10px 0 0;
+            border: 1px solid #fff;
+            background: #424242;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .calendar li h2 {
+            font-size: 20px;
+            padding-top: 5px;
+        }
+
+        .calendar li p {
+            font-size: 14px;
+        }
+
+        .calendar .active {
+            border: 1px solid #424242;
+            background: #fff;
+            color: #e84a7e;
+        }
+
+        /* .calendar .active h2 {} */
+
+        .calendar .active p {
+            font-weight: bold;
+        }
+
+        .calendar .text {
+            width: 178px;
+            padding: 0 10px 10px;
+            border: 1px solid #fff;
+            padding-top: 10px;
+            background: #f1f1f1;
+            color: #555;
+        }
+
+        .calendar .text h2 {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .calendar .text p {
+            font-size: 12px;
+            line-height: 18px;
+        }
+    </style>
+    <!-- <script>
+        window.onload = function () {
+            //div的ID
+            var oTab = document.getElementById('tab');
+            //div的子元素数组下标
+            var aTxt = oTab.getElementsByTagName('div')[0];
+            //li的数组
+            var aLi = oTab.getElementsByTagName('li');
+            console.log(aLi)
+            var aArr = [
+                '这是一月活动内容',
+                '这是二月活动内容',
+                '这是三月活动内容',
+                '这是四月活动内容',
+                '这是五月活动内容',
+                '这是六月活动内容',
+                '这是七月活动内容',
+                '这是八月活动内容',
+                '这是九月活动内容',
+                '这是十月活动内容',
+                '这是十一月活动内容',
+                '这是十二月活动内容'
+            ];
+
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].index = i;
+                //鼠标移到1-12上面时↓
+                aLi[i].onmouseover = function () {
+                    for (var i = 0; i < aLi.length; i++) {
+                        aLi[i].className = '';
+                    }
+                    //鼠标指那个那个添加class类名
+                    this.className = 'active';
+                    aTxt.innerHTML = '<h2>' + (this.index + 1) + '月活动</h2><p>' + aArr[this.index] + '</p>';
+                }
+            }
+        }
+    </script> -->
+    <script>
+        window.onload = function () {
+            var oDiv1 = document.getElementById('tab');
+            //这个不加[]就是个数组
+            //获取oDiv中所有li的数组
+            var aLi1 = oDiv1.getElementsByTagName('li');
+            //[]里面的就是调用oDiv1子元素中的第几个
+            //下面框框的所有文字
+            var aDiv1 = oDiv1.getElementsByTagName('div')[0];
+            //下面框框文字的h2
+            // var aH21 = aDiv1.getElementsByTagName('h2')[0];
+            //下面框框文字的p
+            // var aP1 = aDiv1.getElementsByTagName('p')[0];
+            var aArr1 = [
+                '这是1月活动内容',
+                '这是2月活动内容',
+                '这是3月活动内容',
+                '这是4月活动内容',
+                '这是5月活动内容',
+                '这是6月活动内容',
+                '这是7月活动内容',
+                '这是8月活动内容',
+                '这是9月活动内容',
+                '这是10月活动内容',
+                '这是11月活动内容',
+                '这是12月活动内容']
+            for (var i = 0; i < aLi1.length; i++) {
+                aLi1[i].index = i;
+                //鼠标移到第一个li，清空别的所有li类名，移到第二个再清空别的
+                //鼠标瞄一次li则触发一次下面事件
+                aLi1[i].onmouseover = function () {
+                    for (var i = 0; i < aLi1.length; i++) {
+                        //获取所有li,清除所有类名
+                        aLi1[i].className = '';
+                    }
+                    //向触发事件的li添加类名
+                    //鼠标瞄谁this就是谁
+                    this.className = 'active';
+                    aDiv1.innerHTML = '<h2>' + (this.index + 1) + '月活动</h2><p>' + aArr1[this.index] + '</p>';
+                    //aH21.innerHTML=this.index+1+'月活动';
+                    //aP1.innerHTML=aArr1[this.index];
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="tab" class="calendar">
+
+        <ul>
+            <li class="active">
+                <h2>1</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>2</h2>
+                <p>FER</p>
+            </li>
+            <li>
+                <h2>3</h2>
+                <p>MAR</p>
+            </li>
+            <li>
+                <h2>4</h2>
+                <p>APR</p>
+            </li>
+            <li>
+                <h2>5</h2>
+                <p>MAY</p>
+            </li>
+            <li>
+                <h2>6</h2>
+                <p>JUN</p>
+            </li>
+            <li>
+                <h2>7</h2>
+                <p>JUL</p>
+            </li>
+            <li>
+                <h2>8</h2>
+                <p>AUG</p>
+            </li>
+            <li>
+                <h2>9</h2>
+                <p>SEP</p>
+            </li>
+            <li>
+                <h2>10</h2>
+                <p>OCT</p>
+            </li>
+            <li>
+                <h2>11</h2>
+                <p>NOV</p>
+            </li>
+            <li>
+                <h2>12</h2>
+                <p>DEC</p>
+            </li>
+        </ul>
+
+        <div class="text">
+            <h2>1月活动</h2>
+            <p>这是1月活动内容</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

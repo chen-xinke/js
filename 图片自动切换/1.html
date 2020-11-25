@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 600px;
+            height: 350px;
+        }
+    </style>
+    <script>
+        //onload别写成onclick
+        window.onload = function () {
+            var img1 = document.getElementById("img1");
+            // 创建数组保存图片路径
+            var imgArr = ["images/img1.jpg", "images/img2.jpg", "images/img3.jpg",]
+            // 创建变量保存图片索引
+            var index = 0;
+            // 声明定时器变量，用来保存定时器标识
+            var timer;
+            //为btn01绑定单击响应函数
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+            btn01.onclick = function () {
+                // 目前，点击一次，就会触发一次定时器，点击多次，则触发多次，导致
+                // 图片切换过快。 并且我们只能关闭最后一次开启的定时器
+                //开启定时器之前先把上个关了，
+                //在开启定时器之前，需要将“当前”元素上的其他定时器关闭
+                clearInterval(timer);
+                //开启定时器自动切换
+                timer = setInterval(function () {
+                    // 使索引自增
+                    index++;
+                    //判断索引是否唱超过最大索引
+                    // if(index >= imgArr.length){
+                    //     //则将index为0
+                    //     index = 0;
+                    // }
+                    index %= imgArr.length;
+                    // 修改img1的src属性
+                    img1.src = imgArr[index];
+                }, 1000)
+            }
+            btn02.onclick = function(){
+                // 点击之后关闭定时器
+                // clearInterval()可以接受任何参数
+                // 参数是有效的定时器标识则停止对应定时器
+                // 如果不是有效标识则什么也不做
+                clearInterval(timer);
+
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <img id="img1" src="images/img1.jpg" />
+    <br>
+    <button id="btn01">开始</button>
+    <button id="btn02">停止</button>
+</body>
+
+</html>

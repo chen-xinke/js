@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+          #box1{
+              width: 100px;
+              height: 100px;
+              background-color: red;
+              position: absolute;
+          }
+    </style>
+    <script>
+        window.onload = function(){
+            //获取box1
+            var box1 = document.getElementById("box1");
+            //绑定鼠标移动事件(鼠标瞄准)
+            document.onmousemove = function(event){
+                //解决兼容性
+                event = event || window.event;
+                //获取滚动条距离
+                //(chrome认为浏览器的滚动条是body的，可以通过body。scrollTop来获取
+                //var st = document.body.scrollTop;
+                //火狐等浏览器以为浏览器滚动条是html的
+                //var st = document.documentElement.scrollTop;)
+                var st = document.body.scrollTop || document.documentElement.scrollTop;
+                var sl = document.body.scrollLeft ||document.documentElement.scrollLeft;
+                // //获取鼠标在当前“可见”窗口的坐标
+                var left = event.clientX;
+                var top = event.clientY;
+                //获取鼠标相对与当前“网页”的坐标
+                //ie8以下不能用这个属性pag
+                //var left = event.pageX;
+                //var top = event.pageY;
+                //设置div偏移量(移动量)
+                box1.style.left = left+sl+ "px";
+                box1.style.top = top+ st+ "px";
+            }
+        }
+    </script>
+</head>
+<!-- 长度和宽度出现滑动条方块也不会偏离 -->
+<body style="height: 1000px;width: 2000px;">
+    <div id="box1"></div>
+</body>
+</html>

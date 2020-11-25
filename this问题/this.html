@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            //获取所有超链接
+            var allA = document.getElementsByTagName("a");
+            for (var i = 0; i < allA.length; i++) {
+                //for循环会在加载完网页之后立即执行，
+                //而响应函数会在超链接被点击才执行
+                //当响应函数执行时，for早已经执行完毕
+                alert("for正在执行" + i);
+                allA[i].onclick = function(){
+                    alert("响应函数正在执行"+i);
+                    ///this获得的值是3，所以this 不== all[i]
+                    
+                }
+
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <table id="employeeTable">
+        <tr>
+            <th>名字</th>
+            <th>邮箱</th>
+            <th>工资</th>
+            <th>$nbsp;</th>
+        </tr>
+        <tr>
+            <td>董秋龙</td>
+            <td>董哥邮箱</td>
+            <td>33500</td>
+            <td><a href="Javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>陈新科</td>
+            <td>科哥邮箱</td>
+            <td>28500</td>
+            <td><a href="deleteEmp?id=001">Delete</a></td>
+        </tr>
+        <tr>
+            <td>贾帅涛</td>
+            <td>涛哥邮箱</td>
+            <td>29500</td>
+            <td><a href="deleteEmp?id=001">Delete</a></td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box01 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            /* 为了兼容ie写的 */
+            left: 0;
+        }
+
+        #box02 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(192, 230, 255);
+            position: absolute;
+            /* 为了兼容ie写的 */
+            left: 0;
+            top: 200px;
+        }
+    </style>
+    <script></script>
+    <script>
+        window.onload = function () {
+            var box01 = document.getElementById("box01");
+            // 获取btn2
+            var btn02 = document.getElementById("btn02");
+            var btn01 = document.getElementById("btn01");
+            //点击按钮box1向右移动（left增大)
+            btn01.onclick = function () {
+                // 负的速度到不了正的目标位置
+                move(box01, "left", 800, 10)
+            };
+            btn02.onclick = function () {
+                move(box01, "left", 0, 10);
+            };
+            var btn03 = document.getElementById("btn03");
+            btn03.onclick = function () {
+                move(box02, "left", 800, 10)
+            }
+            // var btn04 = document.getElementById("btn04");
+            // btn04.onclick = function(){
+            //     // move(box02,"width",800,10)
+            //     move(box02,"width",800,10,function(){
+            //         move(box02,"left",400,10,function(){
+
+            //         })
+            //     })
+            // }
+        };
+        // obj 要执行动画的对象
+        // attr 要执行动画的样式,比如left，width
+        //target 执行动画目标位置
+        //speed 移动速度（正数向右负数向左）
+        //callback 回调函数，这个函数在动画执行完之后执行
+        function move(obj, attr, target, speed, callback) {
+            // 关闭上一次定时器
+            clearInterval(obj.timer);
+            // 设置target和speet同为正负
+            // 获取元素目前的位置
+            var current = parseInt(getStyle(obj, attr));
+            //判断移动的正负值
+            // 0到800值为正，800向0则为负
+            if (current > target) {
+                // 此时速度应为负值
+                speed = -speed;
+            }
+
+            //开启一个定时器来执行动画效果
+            //向执行动画对象中添加一个timer属性，来保存自己的定时器标识,这样不会干扰另一个
+            obj.timer = setInterval(function () {
+                //获取原来left值
+                //parseInt()获取合法数字
+                var oldValue = parseInt(getStyle(obj, attr));
+                //在旧值基础上增加
+                var newValue = oldValue + speed;
+                //判断是否到800
+                //向左移动时，判断newValue是否小于target
+                // 向右移动时，判断newValue是否大于target
+                if ((speed < 0 && newValue < target) || (speed > 0 && newValue > target)) {
+                    newValue = target;
+                }
+                //给box1新值
+                //[]这个前不能加.      []里面可以写变量,传啥改变啥
+                obj.style[attr] = newValue + "px";
+                //移动到800就停止
+                if (newValue == target) {
+                    clearInterval(obj.timer);
+                    //动画执行完毕调用回调函数
+                    //传回调函数就执行，不传就不执行，这样才不会报错  安迪烦的
+                    callback && callback();
+                }
+            }, 30);
+
+        }
+        // 定义一个函数，用来获取指定元素的当前样式
+        // 在ie里没有指定方向的值可能显示auto
+        // 参数：
+        //       obj 要获取的元素样式
+        //       name 要获取的样式名
+        function getStyle(obj, name) {
+            if (window.getComputedStyle) {
+                return getComputedStyle(obj, null)[name];
+            } else {
+                //    ie没有getComputedStyle()方法
+                return obj.currentStyle[name];
+            }
+
+        };
+        //所有定时器标识都由全局变量timer保存，这样一个执行会停止另一个
+        // var timer;
+
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点击按钮div向右移动</button>
+    <button id="btn02">点击按钮div向左移动</button>
+    <button id="btn03">点击按钮div2向右移动</button>
+    <button id="btn04">测试</button>
+    <div id="box01"></div>
+    <div id="box02"></div>
+    <div style="width: 0;height: 1000px; border: 1px black solid; position: absolute;left: 800px;top: 0;"></div>
+</body>
+
+</html>

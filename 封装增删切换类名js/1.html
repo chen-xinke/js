@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .b1 {
+            width: 500px;
+            height: 200px;
+            background-color: blue ;
+
+        }
+
+        .b2 {
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+        }
+    </style>
+    <script src="../二级菜单/tools.js"></script>
+    <script>
+        window.onload = function () {
+            var box = document.getElementById("box");
+            box.onclick = function () {
+                toggleClass(box, "b2");
+            }
+
+            // // 向元素中添加指定的class属性值
+            // // Obj 要添加class属性的元素
+            // // cn要添加的class值
+            // function addClass(obj, cn) {
+            //     // 检查obj中是否含有cn，有就不加类名没有就加
+            //     if (!hasClass(obj, cn)) {
+            //         obj.className +=" "+ cn;
+            //     }
+
+            // }
+            // // 判断元素中是否含有指定的class属性值
+            // function hasClass(obj, cn) {
+            //     //正则表达式判断
+            //     var reg = new RegExp("\\b" + cn + "\\b");
+            //     return reg.test(obj.className);
+            // }
+
+            // //删除指定元素class属性
+            // function removeClass(obj, cn) {
+            //     var reg = new RegExp("\\b" + cn + "\\b");
+            //     obj.className = obj.className.replace(reg, "")
+            // }
+            // //切换类，有就删没有就加上
+            // function toggleClass(obj, cn) {
+            //     // 判断obj中是否有cn
+            //     if (hasClass(obj, cn)) {
+            //         //有就删
+            //         removeClass(obj, cn);
+            //     } else {
+            //         addClass(obj, cn);
+            //     }
+            // }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="b1" id="box"></div>
+</body>
+
+</html>

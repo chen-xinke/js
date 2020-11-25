@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+    你家住几楼？
+    <input type="text" name="" id="weight"/>
+    <button id="a">提交</button>
+	<script>
+	    document.getElementById("a").onclick = function(){
+	    var a = document.getElementById("weight").value;	
+        if (a=="六楼"||a=="五楼"||a=="四楼"||a=="三楼"||a=="二楼"||a=="一楼") {
+        	alert("楼梯");
+        }else{
+        	alert("电梯");
+        }
+        }
+	</script>
+</body>
+</html>

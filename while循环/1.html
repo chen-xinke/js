@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>日期对象综合应用</title>
+<style type="text/css">
+<!--
+/*设置样式：无边框的文本框*/
+input{font-size:30px;
+color:#FFFFFF;
+background-color:#930;
+border:4px double #900;
+}
+</style>
+</head>
+
+<body>
+<form name="myform">
+<input name="myclock" type="text" value="" size="20" />
+</form>
+<script language="javascript">
+<!--
+function disptime()
+{
+ var time = new Date();//获得当前时间
+ var year = time.getFullYear();//获得年
+ var month = time.getMonth()+1;//获得月
+ var date = time.getDate();//获得年月日
+ var hour = time.getHours();//获得小时，分钟，秒
+ var minute = time.getMinutes();
+ var second = time.getSeconds();
+ if (minute < 10)//如果分钟只有1位，补0显示
+ minute = "0"+minute;
+ if (second < 10)//如果秒数只有1位，补0显示
+ second = "0"+second;
+ /*设置文本框的内容为当前时间*/
+ document.myform.myclock.value = year+"年"+month+"月"+date+"日"+hour+":"+minute+":"+second
+ /*设置定时器每隔1秒（1000毫秒），调用函数disptime()执行，刷新时钟显示*/
+ var myTime = setTimeout("disptime()",1000);
+}
+disptime();
+//-->
+</script>
+</body>
+</html>

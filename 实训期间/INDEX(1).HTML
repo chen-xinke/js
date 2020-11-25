@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div a:first{
+			display: block;
+			width: 20px;
+			height: 20px;background: #a45;
+		}
+		div{
+			display: inline-block;
+			font-size: 20px;
+			font-weight: 700;
+			color: #a45;
+		}
+		span{
+			font-size: 20px;
+			font-weight: 700;
+		}
+	</style>
+</head>
+<body>
+<div></div>
+<div></div>
+<span>:</span>
+<div></div>
+<div></div>
+<span>:</span>
+<div></div>
+<div></div>
+	<script>
+	var str = 'abccbaxzaxzab';
+	var newstr = 'axz';
+	function getIndex(str,sub){
+		var len = str.length-sub.length
+		for(var i = 0; i <= len; i++){
+			for(var j = 0; j < sub.length; j++){
+				if(sub[j] != str[j+i]){
+					break;
+				};
+				if(j == sub.length-1){
+					return i;
+				};
+			};
+		};
+		return -1;
+	}
+	console.log(getIndex(str,newstr));
+
+	var arr = [1,2,3,4,5,6,7,8,9];
+	arr.splice(1,3,555);
+	function getTime(str,sub){
+		var star = 0;
+		var len = str.length - sub.length;
+		while(star <= len){
+			if(str.slice(star,sub.length + star) == sub){
+				return star;
+			}
+			star ++;
+		}
+		return -1;
+	}
+	console.log(getTime(str,newstr));
+	 for(var i = 1; i <= 100; i++){
+	 	var a = true ;
+	 	for(var j = 2; j < i; j++){
+	 		if(i % j == 0){
+	 			a = false;
+	 			break;
+	 		};
+	 	};
+	 	if(a){
+	 		console.log(i)
+	 	}
+	 }
+
+	 for(var i = 1; i <=100;i++){
+	 	var a = 1;
+	 	for(var j = 2;j < i; j++){
+	 		if(i%j == 0){
+	 			a = 0;
+	 			break
+	 		}else{
+	 			a = 1;
+	 		}
+	 	}
+	 	if(a == 1 && i != 1){
+	 		console.log(i)
+	 	}
+	 }
+
+	 //字符串查重
+	 String.prototype.one = function(){
+	 	var obj = {};
+	 	var str = '';
+	 	var len = this.length;
+	 	for(var i = 0; i < len; i++){
+	 		if(!(obj[this[i]])){
+	 			obj[this[i]] = '1';
+	 		}
+	 	}
+	 	return str = Object.keys(obj).join('');
+	 }
+	 var str = 'asjdfhkjasdhfakjsdfh';
+	 console.log(str.one())
+	 //冒泡排序
+	 var arr = [1,4,12,45,12,33,21,54,12]
+	 var one = arr[0]
+	 for(var j = 0;j < arr.length-1; j++){
+	 	for(var i = 0; i < arr.length - 1; i++ ){
+	 		if(arr[i] > arr[i+1]){
+	 			one = arr[i];
+	 			arr[i] = arr[i+1];
+	 			arr[i+1] = one;
+	 		}
+	 	}
+	 }
+	 console.log(arr)
+	 //选择排序
+	 var arr1 = [1,21,54,21,54,31,45,321,54,1,45,31]
+	 for(var i = 0; i < arr1.length;i++){
+	 	for(var j = i+1; j < arr1.length; j++){
+	 		if(arr1[i] > arr1[j]){
+	 			var a = arr1[i];
+	 			arr1[i] = arr1[j];
+	 			arr1[j] = a;
+	 		}
+	 	}
+	 }
+	 console.log(arr1);
+	 //复制数组
+	 var arrs = [12,54,21,54,31,254,21,54,2,1];
+	 function clone(arr){
+	 	var arr2 = [];
+	 	for(let i = 0; i < arr.length; i++){
+	 		arr2[i] = arr[i];
+	 	}
+	 	return arr2;
+	 }
+	 var arr3 = clone(arrs);
+	 console.log(arr3);
+	 //打印1-100质数；
+	 for(var i = 1; i <= 100; i++){
+	 	for(var j = 2; j < i; j++){
+	 		if(i % j == 0){
+	 			break;
+	 		}
+	 	}
+	 	if(i <= j && i != 1){
+	 		console.log(i);
+	 	}
+	 }
+	 //模糊查找
+	 var str = 'sadfasdgadfsadfaaa';
+	 var num = 0;
+	 var a = 0;
+	 while(str.indexOf('a',a) > -1){
+	 	a = str.indexOf('a',a)+1;
+	 	num++;
+	 }
+	 console.log(num)
+	</script>
+	<script>
+		var divs = document.querySelectorAll('div')
+			setInterval(function(){
+					var str = '';
+					var date = new Date();
+					var h = getDate(date.getHours());
+					var m = getDate(date.getMinutes())
+					var s = getDate(date.getSeconds())
+					str = (h+m+s).split('');
+					for(var i = 0; i < str.length;i++){
+						divs[i].innerHTML = str[i];
+					}
+			},1000)
+			function getDate(date){
+				return date < 10? '0'+date:date.toString();
+			}
+			var obj = {
+				a:'a',
+				b:'b',
+				c:'c'
+			}
+			for(item in obj){
+				console.log(item)
+			}
+	</script>
+</body>
+</html>

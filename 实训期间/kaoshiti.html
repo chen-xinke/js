@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+//http协议需要ca认证，一般免费证书较少，因此需要收费。
+//http是超文本传输协议，信息是明文传输，https是	具有安全性的ssl加密传输协议
+//http和https使用的链接方式不同，端口也不同，前者是80后者443
+//http的链接很简单是无状态的，https协议是由ssl+http协议构建的进行加密传输，
+//身份认证的网络协议比http协议安全。
+//模糊查找
+    /*
+    var str = "sdafasdldsa";
+    var num = 0;
+    var i = 0;
+    while(str.indexOf("a",i) > -1){
+    	i = str.indexOf("a",i)+1;
+    	num++;
+    }
+    console.log(num)
+    */
+//复制数组
+        /*var arrs = [1,12,14,5,4];
+        function clone(arr){
+        	var arr2 = [];
+        	for (var i = 0 ; i < arrs.length ; i++) {
+        		arr2[i] = arrs[i];
+        	}
+        	return arr2;
+        }
+        var arr3 = clone(arrs);
+        console.log(arr3);
+//打印1-100质数；
+        for (var i = 2; i <= 100; i++) {
+        	var flag = true;
+        	for(var j = 2 ; j < i ; j++){
+                if(i%j == 0){
+                	flag = false;
+                }
+
+        	}
+            if (flag) {
+            	console.log(i);
+            } 
+        }
+//选择排序
+        var arr1 = [2,5,4,8,1,5,4,8,]
+        for (var i = 0; i < arr1.length ; i++) {
+        	for (var j = i+1; j < arr1.length; j++) {
+        		if (arr1[i] > arr1[j]) {
+        			var a = arr1[i];
+        			arr1[i] = arr1[j];
+        			arr1[j] = a;
+        		}
+        	}
+        }
+        console.log(arr1)
+ 
+//冒泡排序
+        var arr = [1,5,5,4,3,2,7]  
+        var one = arr[0];
+        for (var j = 0; j < arr.length-1 ; j++) {
+             for (var i = 0; i < arr.length-1 ; i++) {
+             	if (arr[i] > arr[i+1]) {
+             		one = arr[i];
+             		arr[i] = arr[i+1];
+             		arr[i+1] = one;
+             	}
+             }
+        } 
+        console.log(arr)   
+             
+//字符串查重     
+        String.prototype.one = function() {
+        	var obj = {};
+        	var str = "";
+        	var len = this.length;
+        	for (var i = 0; i < len; i++) {
+        		if (!(obj[this[i]])) {
+        			obj[this[i]] = "1";
+        		}
+            }
+            return srt = Object.keys(obj).join("");
+        }
+        var str = "sdasdasd";
+        console.log(str.one())
+        */
+//遍历数组
+        var arr = ["你","我","他","她"];
+        var len = arr.length;
+        for (var i = 0; i < len; i++) {
+        	var sty = arr[i];
+            console.log(sty)
+        }
+        
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box01 {
+            background-color: rgb(192, 230, 255);
+            width: 1500px;
+            height: 800px;
+            margin: auto;
+        }
+    </style>
+    <script>
+        // obj 要执行动画的对象
+        // attr 要执行动画的样式,比如left，width
+        //target 执行动画目标位置
+        //speed 移动速度（正数向右负数向左）
+        //callback 回调函数，这个函数在动画执行完之后执行
+        window.onload = function () {
+            var div = document.getElementById("box01")
+            div.onclick = function () {
+                var timer = setInterval(function () {
+                    var rgb = Math.round(Math.random() * (1 - 999) + 999);
+                    var rg = Math.round(Math.random() * (1 - 999) + 999);
+                    var r = Math.round(Math.random() * (1 - 999) + 999);
+                    var rgb = "rgb(" + rgb + "," + r + "," + rg + ")";
+                    div.style.backgroundColor = rgb;
+                }, 50)
+                // 按←暂停
+                document.onkeydown = function () {
+                    clearInterval(timer);
+                }
+
+
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="box01"></div>
+</body>
+
+</html>

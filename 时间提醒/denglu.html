@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	用户名：<input type="text" name="" id="username"/>
+	密码：<input type="password" name="" id="pas">
+	<button id="submit">登录</button>
+	<script>
+         document.getElementById("submit").onclick=function(){
+         var name=document.getElementById("username").value;
+         var pasw=document.getElementById("pas").value;	
+         if (name==""||name==null) {
+         	alert("请输入用户名");
+
+         }else if (pasw==""||pasw==null) {
+         	alert("请输入密码");
+         }else {
+         	alert("提交成功")
+         }
+         }
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .xts {
+      width: 400px;
+      height: 183px;
+      position: absolute;
+    }
+
+    .xt {
+      width: 400px;
+      position: absolute;
+
+    }
+
+    .dts {
+      width: 2000px;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      /* display: none; */
+    }
+
+    .box1 {
+      margin: 100px 100px;
+    }
+
+    /* 小图里面的遮盖层 */
+    .zg {
+      width: 100px;
+      height: 100px;
+      background-color: sandybrown;
+      opacity: .5;
+      position: relative;
+      /* float: left; */
+      /* 需要开定位要不然不能移动遮盖层 */
+      top: 0px;
+      left: 0px;
+      /* display: none; */
+      border: 1px solid #cccccc;
+      /* 鼠标以上去变成鼠标十字架 */
+      cursor: move;
+    }
+
+    .dt {
+      width: 500px;
+      height: 500px;
+      border: 2px solid #cccccc;
+      position: absolute;
+      top: 0px;
+      left: 550px;
+      display: none;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 小图 -->
+  <div class="box1">
+    <div class="xts">
+      <!-- 小图的图片 -->
+      <img src="../轮播图/images/timg1.jpg" alt="小图片" class="xt">
+      <!-- 小图里面的遮盖层 -->
+      <div class="zg"></div>
+    </div>
+    <!-- 小图里面的大图片 -->
+    <div class="dt">
+      <!-- 小图里面大图片的img -->
+      <img src="../轮播图/images/timg1.jpg" alt="大图片" class="dts">
+    </div>
+  </div>
+
+  <script>
+    var xts = document.querySelector('.xts');
+    // 获取大盒子
+    var box1 = document.querySelector('.box1');
+    // 获取遮盖层
+    var zg = document.querySelector('.zg');
+    // 获取大图片
+    var dt = document.querySelector('.dt');
+    // 小图片添加移入事件，鼠标移入遮盖层，大图片显示
+    xts.addEventListener('mouseover', function () {
+      zg.style.display = 'block';
+      dt.style.display = "block";
+      console.log(1);
+    });
+    // 移出小图片，遮盖层和大图片隐藏
+    xts.addEventListener('mouseout', function () {
+      zg.style.display = 'none';
+      dt.style.display = 'none';
+      console.log(2);
+    });
+    //2: 添加移入触发事件
+    xts.addEventListener('mousemove', function (event) {
+      console.log(3);
+      // 求出鼠标在页面上的坐标
+      // console.log(e.pageX);
+      // console.log(e.pageY);
+      // 求出小图片在页面上的偏移值
+      // console.log(xt.offsetTop);
+      // console.log(xt.offsetLeft);
+      // 鼠标上的坐标 - 小图片的偏移值 == 盒子里的坐标
+      var x = event.pageX - xts.offsetLeft;
+      var y = event.pageY - xts.offsetTop;
+      // console.log(x);
+      // console.log(y);
+      // 让盒子里的鼠标坐标，到遮盖层中间.
+      // 盒子里鼠标的坐标-遮盖层的宽和高分别/2 
+      var zgx = x - zg.offsetWidth / 2;
+      var zgy = y - zg.offsetHeight / 2;
+      // // 求出遮盖层最大移动距离
+      var zgMax = xts.offsetWidth - zg.offsetWidth;
+      var zgMaxy = xts.offsetHeight - zg.offsetHeight;
+      // 判断zgx和zgy在的鼠标坐标不能让他为负值
+      if (zgx <= 0) {
+        zgx = 0;
+      } else if (zgx >= zgMax) {
+        zgx = zgMax;
+      }
+      if (zgy <= 0) {
+        zgy = 0;
+      } else if (zgy >= zgMaxy) {
+        zgy = zgMaxy;
+      }
+      zg.style.top = zgy + 'px';
+      zg.style.left = zgx + 'px';
+
+      // 获取大图的图片
+      var dts = document.querySelector('.dts');
+      // 1:求出大图片的x,y坐标最大移动值
+      var dtsMax = dts.offsetWidth - dt.offsetWidth;
+      var dtsMaxY = dts.offsetHeight - dt.offsetHeight;
+      // console.log(dtsMax,dtsMaxY);
+      // 大图片移动值= 小图的遮盖层移动坐标 * 大图的最大移动值 / 小图遮盖层的最大的移动值
+      // 例如:
+      // 小图的移动坐标移动了 1px
+      // 大图的最大移动值为300;
+      // 小图遮盖层的最大值为100
+      // 大图片的移动值为: 1 * 300 / 100
+      // 小图移动1px,大图移动3px
+      dts.style.top = -zgy * dtsMaxY / zgMaxy + 'px';
+      dts.style.left = -zgx * dtsMax / zgMax + 'px';
+    })                
+  </script>
+</body>
+
+</html>
